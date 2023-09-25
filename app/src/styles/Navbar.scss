@@ -1,0 +1,68 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  
+.navbar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;  // Distributes extra space evenly around items
+  align-items: center;  // Vertically center-aligns items
+  background-color: #333;
+  color: white;
+  height: 80px;
+  z-index: 1000;
+}
+
+.icon-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px; // You can change the font size
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  user-select: none;
+
+
+}
+
+.icon-content span {
+  margin-top: 4px; // Adjust as needed
+  font-size: 14px;
+
+
+}
+
+
+.icon {
+  font-size: 14px;
+  flex: 1;
+  text-align: center;
+  border-radius: 20px; // Circular overlay
+  max-width: 50px;
+  max-height: 50px;
+  padding: 10px;  // Add padding to make the background larger
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  transform: translateY(0px);  // Start position
+  user-select: none;
+  // pointer-events: none;
+
+
+
+}
+
+.icon-selected {
+  background-color: white;
+  border-radius: 15px; // Circular overlay
+  border: 2px solid black;
+  max-width: 50px;
+  max-height: 50px;
+  padding: 10px;  // Add padding to make the background larger
+  color: black; // This will be the color when the icon is selected
+  font-weight: 800;
+  transform: translateY(-5px);  // End position
+
+}
