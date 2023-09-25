@@ -2,8 +2,8 @@
   text-align: center;
   background-color: #333;
   height: 100vh;  // Covers the entire vertical height
-  padding: 0px 0px 0px 0px;  // Padding around the app
-  border-radius: 40px;
+  // padding: 0px 0px 0px 0px;  // Padding around the app
+  // border-radius: 40px;
   font-family: "Century Gothic", "Arial", sans-serif;
 
 
@@ -36,6 +36,89 @@
 .App-link {
   color: #61dafb;
 }
+
+.Page-container {
+  // box-sizing: border-box;  /* Include padding in height */
+  background-color: #f0f0f0;
+  color: #333;
+  padding: 20px;
+  // border-radius: 5px;
+  font-size: 18px;
+  margin: auto; /* Horizontally center within the parent flex container */
+  position: absolute;
+  top: 30%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  width: 90%; /* Your width */
+  height: 100vh; /* Your height */
+  transform: translate(-50%, -40%); /* Correct for actual center */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;  /* Align items to the start (left) */
+  justify-content: center;  /* Center items vertically */
+}
+
+.Page-container h2, h3 {
+  color: red;
+}
+
+
+.Profile-container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 5px;
+  margin: auto; /* Horizontally center within the parent flex container */
+  max-width: 80%; /* Optional, you can set a maximum width */
+}
+
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+
+  label {
+    margin-bottom: 4px;
+    font-weight: bold;
+  }
+
+  input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+}
+
+/* Container style */
+.title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 3px 16px 8px;
+  gap: 10px;
+  width: 393px;
+  height: 52px;
+  flex: none;
+  order: 2;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+/* h2 element style */
+.title-container h1 {
+  width: 68px;
+  height: 41px;
+  // font-family: 'SF Pro', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 41px;
+  color: black;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+
 
 @keyframes App-logo-spin {
   from {
