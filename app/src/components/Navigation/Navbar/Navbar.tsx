@@ -3,32 +3,79 @@ import '../../../styles/Navbar.scss';
 import { FaHome, FaSearch, FaBolt, FaBookmark, FaBell, FaSlidersH, FaFilter, FaUser, FaFire, FaHeart, FaCheck, FaCog } from 'react-icons/fa';
 
 
-import Home from '../../../pages/home'; // Import your Home component
-import Explore from '../../../pages/explore'; // Import your Explore component
-import Challenges from '../../../pages/challenges'; // Import your Challenges component
-import Collection from '../../../pages/collection'; // Import your Collection component
-import Notifications from '../../../pages/notifications'; // Import your Notifications component
-import Profile from '../../../pages/Profile'; // Import your Profile component
-// ...rest of your imports
+// import Home from '../../../pages/Home'; // Import your Home component
+// import Explore from '../../../pages/Explore'; // Import your Explore component
+// import Challenges from '../../../pages/Challenges'; // Import your Challenges component
+// import Collection from '../../../pages/Collection'; // Import your Collection component
+// import Notifications from '../../../pages/Notifications'; // Import your Notifications component
+// import Profile from '../../../pages/Profile'; // Import your Profile component
+// import Settings from '../../../pages/setProfile'; // Import your Profile component
+
+// // ...rest of your imports
 
 interface NavbarProps {
   setSelectedIcon: React.Dispatch<React.SetStateAction<string | null>>;
   selectedIcon: string | null;
 }
 
-
 const Navbar: React.FC<NavbarProps> = ({ setSelectedIcon, selectedIcon }) => {
-
-  const handleIconClick = (iconName: string) => {
-    setSelectedIcon(iconName); // using the prop
+  
+  const handleHomeClick = (iconName: string) => {
+    if (selectedIcon === 'FaHome' && iconName === 'FaHome') {
+      setSelectedIcon('FaSlidersH');
+    } else {
+      setSelectedIcon(iconName);
+    }
   };
+
+  const handleExploreClick = (iconName: string) => {
+    if (selectedIcon === 'FaSearch' && iconName === 'FaSearch') {
+      setSelectedIcon('FaFilter');
+    } else {
+      setSelectedIcon(iconName);
+    }
+  };
+
+  const handleChallengesClick = (iconName: string) => {
+    if (selectedIcon === 'FaBolt' && iconName === 'FaBolt') {
+      setSelectedIcon('FaFire');
+    } else {
+      setSelectedIcon(iconName);
+    }
+  };
+
+  const handleCollectionClick = (iconName: string) => {
+    if (selectedIcon === 'FaBookmark' && iconName === 'FaBookmark') {
+      setSelectedIcon('FaHeart');
+    } else {
+      setSelectedIcon(iconName);
+    }
+  };
+
+  const handleNotificationsClick = (iconName: string) => {
+    if (selectedIcon === 'FaBell' && iconName === 'FaBell') {
+      setSelectedIcon('FaCheck');
+    } else {
+      setSelectedIcon(iconName);
+    }
+  };
+
+  const handleProfileClick = (iconName: string) => {
+    if (selectedIcon === 'FaUser' && iconName === 'FaUser') {
+      setSelectedIcon('FaCog');
+    } else {
+      setSelectedIcon(iconName);
+    }
+  };
+
+
 
   return (
     <div className="app-container">
       <div className="navbar">
         <div
           className={`icon ${selectedIcon === 'FaHome' ? 'icon-selected' : ''}`}
-          onClick={() => handleIconClick('FaHome')}
+          onClick={() => handleHomeClick('FaHome')}
         >
           <div className="icon-content">
             {selectedIcon === 'FaHome' ? <FaSlidersH /> : <FaHome />}
@@ -37,7 +84,7 @@ const Navbar: React.FC<NavbarProps> = ({ setSelectedIcon, selectedIcon }) => {
         </div>
         <div
           className={`icon ${selectedIcon === 'FaSearch' ? 'icon-selected' : ''}`}
-          onClick={() => handleIconClick('FaSearch')}
+          onClick={() => handleExploreClick('FaSearch')}
         >
           <div className="icon-content">
             {selectedIcon === 'FaSearch' ? <FaFilter /> : <FaSearch />}
@@ -46,7 +93,7 @@ const Navbar: React.FC<NavbarProps> = ({ setSelectedIcon, selectedIcon }) => {
         </div>
         <div
           className={`icon ${selectedIcon === 'FaBolt' ? 'icon-selected' : ''}`}
-          onClick={() => handleIconClick('FaBolt')}
+          onClick={() => handleChallengesClick('FaBolt')}
         >
           <div className="icon-content">
             {selectedIcon === 'FaBolt' ? <FaFire /> : <FaBolt />}
@@ -55,7 +102,7 @@ const Navbar: React.FC<NavbarProps> = ({ setSelectedIcon, selectedIcon }) => {
         </div>
         <div
           className={`icon ${selectedIcon === 'FaBookmark' ? 'icon-selected' : ''}`}
-          onClick={() => handleIconClick('FaBookmark')}
+          onClick={() => handleCollectionClick('FaBookmark')}
         >
           <div className="icon-content">
             {selectedIcon === 'FaBookmark' ? <FaHeart /> : <FaBookmark />}
@@ -64,7 +111,7 @@ const Navbar: React.FC<NavbarProps> = ({ setSelectedIcon, selectedIcon }) => {
         </div>
         <div
           className={`icon ${selectedIcon === 'FaBell' ? 'icon-selected' : ''}`}
-          onClick={() => handleIconClick('FaBell')}
+          onClick={() => handleNotificationsClick('FaBell')}
         >
           <div className="icon-content">
             {selectedIcon === 'FaBell' ? <FaCheck /> : <FaBell />}
@@ -73,17 +120,27 @@ const Navbar: React.FC<NavbarProps> = ({ setSelectedIcon, selectedIcon }) => {
         </div>
         <div
           className={`icon ${selectedIcon === 'FaUser' ? 'icon-selected' : ''}`}
-          onClick={() => handleIconClick('FaUser')}
+          onClick={() => handleProfileClick('FaUser')}
         >
           <div className="icon-content">
             {selectedIcon === 'FaUser' ? <FaCog /> : <FaUser />}
             <span>{selectedIcon === 'FaUser' ? 'Settings' : 'Profile'}</span>
           </div>
         </div>
+        
       </div>
     </div>
-
   );
 };
 
 export default Navbar;
+
+
+// const Navbar: React.FC<NavbarProps> = ({ setSelectedIcon, selectedIcon }) => {
+//   const handleIconClick = (iconName: string) => {
+//     if (selectedIcon === 'FaUser' && iconName === 'FaUser') {
+//       setSelectedIcon('FaCog');
+//     } else {
+//       setSelectedIcon(iconName);
+//     }
+//   };
