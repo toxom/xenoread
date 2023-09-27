@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getAuth, onAuthStateChanged, updateProfile, updatePassword, signOut } from 'firebase/auth'; // Firebase Auth methods
 import { ref, uploadBytes, getDownloadURL, getStorage } from 'firebase/storage'; // Firebase Storage methods
+import { getFirestore, doc, onSnapshot } from 'firebase/firestore';
 import '../styles/App.scss';
 
 const Profile: React.FC = () => {

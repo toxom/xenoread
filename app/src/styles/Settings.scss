@@ -1,86 +1,97 @@
 .Settings-container {
+    background-color: #ffffff;
     padding: 20px;
-    
+    border-radius: 5px;
+    margin: auto;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+  
     .User-info {
       background-color: #f4f4f4;
       padding: 16px;
       border-radius: 8px;
-      margin-bottom: 16px;
-      
-      // Avatar thumbnail
+      display: flex;
+      align-items: center;
+      gap: 16px;
+  
       .avatar-thumbnail {
         width: 48px;
         height: 48px;
         border-radius: 50%;
-        margin-right: 16px;
+        object-fit: cover;
       }
-      
-      // Username
-      .username {
-        font-size: 18px;
-        font-weight: bold;
-      }
-      
-      // Email
-      .email {
-        font-size: 16px;
-        color: #888888;
+  
+      .user-details {
+        display: flex;
+        flex-direction: column;
+  
+        .username {
+          font-size: 18px;
+          font-weight: bold;
+        }
+  
+        .email {
+          font-size: 16px;
+          color: #888888;
+        }
       }
     }
-    
+  
     .Personal-info,
     .Notification-info {
       background-color: #f4f4f4;
       padding: 16px;
       border-radius: 8px;
-      margin-bottom: 16px;
-      
-      // Grouped rows style
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+  
       .row {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 8px 0;
-        
-        // Label style
+        flex-direction: column;
+        gap: 8px;
+  
         .label {
           font-size: 16px;
           font-weight: bold;
         }
-        
-        // Input field style
+  
         .input-field {
-          flex-grow: 1;
-          margin-left: 16px;
           font-size: 16px;
-          border: none;
-          background-color: transparent;
+          padding: 8px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
         }
       }
     }
-    
+  
     .Action-buttons {
       display: flex;
-      justify-content: space-between;
-      
-      // Button style
+      gap: 16px;
+  
       button {
         padding: 12px 24px;
         font-size: 16px;
-        background-color: #007AFF;
-        color: white;
         border: none;
         border-radius: 8px;
         cursor: pointer;
         transition: background-color 0.3s;
-        
-        &:hover {
-          background-color: #0056b3;
+  
+        &.save-button {
+          background-color: #007AFF;
+          color: white;
+  
+          &:hover {
+            background-color: #0056b3;
+          }
         }
-        
-        &:first-child {
+  
+        &.logout-button {
           background-color: #ff3b30;
-          
+  
           &:hover {
             background-color: #d93327;
           }

@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { getAuth, updateProfile, signOut } from 'firebase/auth'; // Firebase Auth methods
-import { getFirestore, doc, updateDoc } from 'firebase/firestore'; // Firebase Firestore methods
+import { getAuth, updateProfile, signOut } from 'firebase/auth';
+import {
+  getFirestore,
+  doc,
+  onSnapshot,
+  updateDoc,
+  DocumentSnapshot,
+  // Add other types/functions you need here
+} from 'firebase/firestore'; // Import Firestore functions and types
 import '../styles/Settings.scss';
+import ButtonRow from '../components/Buttons/ButtonRow';
 
 const ProfileSet: React.FC = () => {
   const [user, setUser] = useState({
@@ -17,6 +25,7 @@ const ProfileSet: React.FC = () => {
 
   const auth = getAuth();
   const db = getFirestore();
+  
 
   useEffect(() => {
     // Fetch user data from Firebase Firestore
@@ -24,7 +33,15 @@ const ProfileSet: React.FC = () => {
     if (userId) {
       const userDocRef = doc(db, 'users', userId);
       // Listen for changes to the user document
-      // Update the user state with the retrieved data
+      const unsubscribe = onSnapshot(userDocRef, (doc) => {
+        if (doc.exists()) {
+          const userData = doc.data();
+          // Update the user state with the retrieved data
+          setUser((prevUser) => ({ ...prevUser, ...userData }));
+        }
+      });
+
+      return () => unsubscribe(); // Cleanup the listener when component unmounts
     }
   }, [auth, db]);
 
@@ -44,6 +61,7 @@ const ProfileSet: React.FC = () => {
         displayLanguage: user.displayLanguage,
       };
       // Update the user document with the new data
+      updateDoc(userDocRef, newData);
     }
   };
 
@@ -55,9 +73,15 @@ const ProfileSet: React.FC = () => {
   return (
     <div className="Settings-container">
       <div className="User-info">
-        {/* Avatar thumbnail */}
-        {/* Username */}
-        {/* Email */}
+        <ButtonRow label="Username">
+          <div className="username">{user.username}</div>
+        </ButtonRow>
+
+        <ButtonRow label="Email">
+          <div className="email">{user.email}</div>
+        </ButtonRow>
+
+        {/* Add avatar thumbnail here */}
       </div>
 
       <div className="Personal-info">

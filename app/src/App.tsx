@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import './context/firebaseConfig'; 
+import * as admin from 'firebase-admin';
+import { app } from './context/firebaseConfig'; // Import the Firebase app instance
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+// import { initializeApp } from 'firebase/app';
 import logo from './logo.svg';
 import './styles/App.scss';
 import AuthPage from './pages/AuthPage'
@@ -22,10 +24,11 @@ import ProfileSet from './pages/setProfile';
 function App() {
   const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-  // const [currentPage, setCurrentPage] = useState<React.ReactNode | null>(null); // Add state for current page
 
   useEffect(() => {
-    const auth = getAuth();
+    // Use the Firebase app instance to initialize Firebase Auth
+    const auth = getAuth(app);
+
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setIsAuthenticated(true);

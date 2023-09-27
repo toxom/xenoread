@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@firebase/firestore": "^4.2.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -11,6 +12,8 @@
     "@types/react": "^18.2.22",
     "@types/react-dom": "^18.2.7",
     "firebase": "^10.4.0",
+    "firebase-admin": "^11.10.1",
+    "firebase-functions": "^4.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-google-login": "^5.2.2",
