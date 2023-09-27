@@ -1,81 +1,134 @@
-import React, { useState } from 'react';
-import InputField from '../components/Inputs/InputField'; // Adjust the import to your folder structure
+import React, { useState, useEffect } from 'react';
+import { getAuth, onAuthStateChanged, updateProfile, updatePassword, signOut } from 'firebase/auth'; // Firebase Auth methods
+import { ref, uploadBytes, getDownloadURL, getStorage } from 'firebase/storage'; // Firebase Storage methods
 import '../styles/App.scss';
 
 const Profile: React.FC = () => {
   const [username, setUsername] = useState('');
+  const [editingUsername, setEditingUsername] = useState(false);
+  const [email, setEmail] = useState('');
+  const [newPassword, setNewPassword] = useState(''); // New state for password change
+  const [avatar, setAvatar] = useState('avatar.png');
+  const [joinDate, setJoinDate] = useState(''); // State for join date
+  const auth = getAuth();
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUsername(e.target.value);
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, user => {
+      if (user) {
+        setUsername(user.displayName || user.email!);
+        setEmail(user.email!);
+        if (user.photoURL) {
+          setAvatar(user.photoURL);
+        }
+
+        // Get the user's metadata, including creation time
+        const creationTime = user.metadata.creationTime;
+        if (creationTime) {
+          setJoinDate(creationTime.toString());
+        }
+      }
+    });
+    return () => unsubscribe();
+  }, [auth]);
+
+  const handleUsernameChange = () => {
+    updateProfile(auth.currentUser!, {
+      displayName: username,
+    }).then(() => {
+      setEditingUsername(false);
+    }).catch(error => {
+      console.error('Error updating username:', error);
+    });
+  };
+
+  const handleChangePassword = () => {
+    updatePassword(auth.currentUser!, newPassword)
+    .then(() => {
+      console.log("Password updated!");
+      setNewPassword(''); // Reset the password field
+    })
+    .catch(error => {
+      console.error('Error updating password:', error);
+    });
+  };
+
+  const handleAvatarUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const storageRef = ref(getStorage(), `avatars/${auth.currentUser!.uid}`);
+      uploadBytes(storageRef, file).then(snapshot => {
+        getDownloadURL(snapshot.ref).then(url => {
+          setAvatar(url);
+          updateProfile(auth.currentUser!, { photoURL: url });
+        });
+      });
+    }
+  };
+
+  const handleLogout = () => {
+    signOut(auth)
+    .then(() => {
+      console.log("Logged out successfully!");
+    })
+    .catch(error => {
+      console.error("Error logging out:", error);
+    });
   };
 
   return (
     <div className="Page-container">
       <div className="Profile-container">
-      <div>
-        <InputField
-          label="Username"
-          type="text"
-          value={username}
-          onChange={handleInputChange}
-          />
-          {/* rest of your code */}
+        {/* Avatar Section */}
+        {/* <div className="avatar-section">
+          <img src={avatar} alt="User Avatar" className="avatar" />
+          <input type="file" onChange={handleAvatarUpload} />
+        </div> */}
+
+
+      {/* Email Section */}
+      {/* <div className="email-section"> */}
+
+
+        {/* </div> */}
+
+        <div className="input-section">
+
+
+          {editingUsername ? (
+            <>
+              <label htmlFor="username">Edit username:</label>
+              <input
+                type="text"
+                id="username"
+                value={username}
+                onChange={e => setUsername(e.target.value)}
+              />
+              <button onClick={handleUsernameChange}>Save</button>
+            </>
+          ) : (
+            <>
+              <label htmlFor="username">Username:</label>
+              <p onClick={() => setEditingUsername(true)}>{username}</p>
+            </>
+          )}
+          <label>Email:</label>
+          <p>{email}</p>
+          <label>Join date:</label>
+          <p>{joinDate}</p>
+          <label>
+            New Password:
+            <input
+              type="password"
+              value={newPassword}
+              onChange={e => setNewPassword(e.target.value)}
+            />
+          </label>
+          <button onClick={handleChangePassword}>Change Password</button>
+          <button onClick={handleLogout}>Logout</button>
         </div>
-        <div>
-        <InputField
-          label="Username"
-          type="text"
-          value={username}
-          onChange={handleInputChange}
-          />
-          {/* rest of your code */}
-        </div>
 
-        {/* User Info Section */}
-        <section className="user-info">
-          <img src="avatar.png" alt="User Avatar" className="avatar"/>
-          <div className="user-details">
-            <h2>Username</h2>
-            <p>Joined: January 2023</p>
-            <p>Languages: English, Finnish</p>
-          </div>
-        </section>
-
-        {/* Statistics Section */}
-        <section className="statistics">
-          <h3>Statistics</h3>
-          <ul>
-            <li>Books Read: 20</li>
-            <li>Challenges Completed: 5</li>
-            <li>etc...</li>
-          </ul>
-        </section>
-
-        {/* Achievements Section */}
-        <section className="achievements">
-          <h3>Achievements</h3>
-          <ul>
-            <li>Completed 5 Challenges</li>
-            <li>Read 20 Books</li>
-            <li>etc...</li>
-          </ul>
-        </section>
-
-        {/* Feedback Section */}
-        <section className="feedback">
-          <h3>Feedback</h3>
-          <ul>
-            <li><a href="#">Rate Xenoread</a></li>
-            <li><a href="#">Refer Xenoread</a></li>
-            <li><a href="#">Give Us Feedback</a></li>
-          </ul>
-        </section>
-      </div>
-
-      {/* Logout and Version */}
-      <div className="footer">
-        <button className="logout-button">Logout</button>
-        <p>Software Version: 1.0.0</p>
+        
+        {/* ...rest of your code... */}
       </div>
     </div>
   );

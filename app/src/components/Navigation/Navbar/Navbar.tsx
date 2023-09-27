@@ -8,7 +8,7 @@ import Explore from '../../../pages/explore'; // Import your Explore component
 import Challenges from '../../../pages/challenges'; // Import your Challenges component
 import Collection from '../../../pages/collection'; // Import your Collection component
 import Notifications from '../../../pages/notifications'; // Import your Notifications component
-import Profile from '../../../pages/profile'; // Import your Profile component
+import Profile from '../../../pages/Profile'; // Import your Profile component
 // ...rest of your imports
 
 interface NavbarProps {

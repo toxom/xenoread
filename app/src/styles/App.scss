@@ -66,27 +66,109 @@
   background-color: #ffffff;
   padding: 20px;
   border-radius: 5px;
-  margin: auto; /* Horizontally center within the parent flex container */
-  max-width: 80%; /* Optional, you can set a maximum width */
-}
-
-
-.input-field {
+  margin: auto;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
-  margin-bottom: 16px;
-
-  label {
-    margin-bottom: 4px;
-    font-weight: bold;
-  }
-
-  input {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
+  align-items: center;
 }
+
+.input-section {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // margin-bottom: 20px;
+}
+
+.input-section label {
+  width: 100%;
+  padding: 10px;
+  text-align: left; /* Align the label text to the left */
+  color: black;
+  font-weight: bold;
+}
+
+.input-section p {
+  width: 100%;
+  padding: 10px;
+  text-align: left; /* Align the label text to the left */
+  // color: red;
+}
+
+.input-section p:hover {
+  background-color: gray;
+  border-radius: 5px;
+  color: white;
+}
+
+.input-section input {
+  width: 90%;
+  padding: 10px;
+  text-align: left; /* Align the label text to the left */
+  color: black;
+}
+
+
+
+input[type="file"],
+input[type="text"],
+input[type="password"] {
+  // width: 90%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // margin-bottom: 20px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  // background-color: red;
+}
+
+
+
+button {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 5px;
+  background-color: #007bff!important;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3!important;
+}
+
+
+// .avatar {
+//   width: 100px;
+//   height: 100px;
+//   border-radius: 50%;
+//   margin-bottom: 10px;
+// }
+
+// label {
+//   width: 100%;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: flex-start;
+//   margin-bottom: 10px;
+// }
+
+
+
+
+
 
 /* Container style */
 .title-container {
