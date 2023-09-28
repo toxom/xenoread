@@ -78,7 +78,6 @@ function App() {
 
   return (
     <div className="App">
-      <Menubar />
       <Navbar setSelectedIcon={setSelectedIcon} selectedIcon={selectedIcon} />
       <main className="App-content">
         {renderPage()}

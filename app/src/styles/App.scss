@@ -200,6 +200,16 @@ button:hover {
   flex-grow: 0;
 }
 
+.fade-enter, .fade-exit {
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+}
+
+.fade-enter-active, .fade-exit-active {
+  opacity: 1;
+}
+
+
 
 
 @keyframes App-logo-spin {

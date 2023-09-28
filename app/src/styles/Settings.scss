@@ -1,102 +1,81 @@
+.Page-container {
+  // box-sizing: border-box;  /* Include padding in height */
+  background-color: #f0f0f0;
+  color: #333;
+  padding: 20px;
+  // border-radius: 5px;
+  font-size: 18px;
+  margin: auto; /* Horizontally center within the parent flex container */
+  position: absolute;
+  top: 30%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  width: 90%; /* Your width */
+  height: 100vh; /* Your height */
+  transform: translate(-50%, -40%); /* Correct for actual center */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;  /* Align items to the start (left) */
+  justify-content: center;  /* Center items vertically */
+}
+
 .Settings-container {
     background-color: #ffffff;
     padding: 20px;
     border-radius: 5px;
     margin: auto;
+    margin-top:30%;
     max-width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
   
   
-    .User-info {
-      background-color: #f4f4f4;
-      padding: 16px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-  
-      .avatar-thumbnail {
-        width: 48px;
-        height: 48px;
-        border-radius: 50%;
-        object-fit: cover;
-      }
-  
-      .user-details {
-        display: flex;
-        flex-direction: column;
-  
-        .username {
-          font-size: 18px;
-          font-weight: bold;
-        }
-  
-        .email {
-          font-size: 16px;
-          color: #888888;
-        }
-      }
+    p {
+      color: black;
     }
   
-    .Personal-info,
-    .Notification-info {
-      background-color: #f4f4f4;
-      padding: 16px;
-      border-radius: 8px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
   
-      .row {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
   
-        .label {
-          font-size: 16px;
-          font-weight: bold;
-        }
-  
-        .input-field {
-          font-size: 16px;
-          padding: 8px;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-        }
+  button {
+    background-color: white!important;
+    color: black;
+    border: 1px solid #e1e1e1;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+    font-weight: bold;
+    color: #333;
+    border-radius: 8px;
+    padding: 16px;
+    // margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; // Or whichever alignment you prefer
+    // width: 300px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    }
+
+
+    &.save-button {
+      // background-color: white!important;
+      color: white;
+
+      &:hover {
+        // background-color: #0056b3;
       }
     }
-  
-    .Action-buttons {
-      display: flex;
-      gap: 16px;
-  
-      button {
-        padding: 12px 24px;
-        font-size: 16px;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-  
-        &.save-button {
-          background-color: #007AFF;
-          color: white;
-  
-          &:hover {
-            background-color: #0056b3;
-          }
-        }
-  
-        &.logout-button {
-          background-color: #ff3b30;
-  
-          &:hover {
-            background-color: #d93327;
-          }
-        }
+
+    &.logout-button {
+      background-color: #ff3b30;
+
+      &:hover {
+        background-color: #d93327;
       }
     }
   }
+}
+  
   

@@ -13,7 +13,7 @@ import ButtonRow from '../components/Buttons/ButtonRow';
 
 const ProfileSet: React.FC = () => {
   const [user, setUser] = useState({
-    username: '',
+    displayName: '',
     email: '',
     country: '',
     language: '',
@@ -51,7 +51,7 @@ const ProfileSet: React.FC = () => {
     if (userId) {
       const userDocRef = doc(db, 'users', userId);
       const newData = {
-        username: user.username,
+        displayName: user.displayName,
         email: user.email,
         country: user.country,
         language: user.language,
@@ -71,37 +71,56 @@ const ProfileSet: React.FC = () => {
   };
 
   return (
-    <div className="Settings-container">
-      <div className="User-info">
-        <ButtonRow label="Username">
-          <div className="username">{user.username}</div>
+    <div className="Page-container">
+      <div className="Settings-container">
+        <p>My info</p>
+
+        <ButtonRow label="Name">
+          <div className="displayName">{user.displayName}</div>
         </ButtonRow>
 
         <ButtonRow label="Email">
           <div className="email">{user.email}</div>
         </ButtonRow>
 
-        {/* Add avatar thumbnail here */}
-      </div>
+        <ButtonRow label="I speak">
+          <div className="language">{user.language}</div>
+        </ButtonRow>
 
-      <div className="Personal-info">
-        {/* Country */}
-        {/* I speak */}
-        {/* City */}
-        {/* About me */}
-      </div>
+        <ButtonRow label="Country">
+          <div className="country">{user.country}</div>
+        </ButtonRow>
 
-      <div className="Notification-info">
-        {/* Notification settings */}
-        {/* Display language */}
-      </div>
+        <ButtonRow label="City">
+          <div className="city">{user.city}</div>
+        </ButtonRow>
 
-      <div className="Action-buttons">
+        {/* <ButtonRow label="About me">
+          <div className="aboutMe">{user.aboutMe}</div>
+        </ButtonRow> */}
+
         <button onClick={handleSave}>Save</button>
+
+
+        <p>General</p>
+
+        <ButtonRow label="Notifications">
+          <div className="notifications">{user.notifications}</div>
+        </ButtonRow>
+
+        <ButtonRow label="Display language">
+          <div className="displayLanguage">{user.displayLanguage}</div>
+        </ButtonRow>
+
+        <p></p>
+        <button>Terms of Service</button>
+        <button>Privacy Policy</button>
+        <button>Help</button>
         <button onClick={handleLogout}>Log Out</button>
         {/* Add buttons for Terms of Service, Privacy Policy, Help, Delete Account */}
       </div>
     </div>
+
   );
 };
 
