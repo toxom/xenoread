@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import * as admin from 'firebase-admin';
+// import * as admin from 'firebase-admin';
 
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { getAnalytics } from "firebase/analytics";
