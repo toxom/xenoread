@@ -8,6 +8,10 @@
 # testing
 /coverage
 
+# Ignore app/src/context and app/functions folders
+app/src/context/
+app/functions/
+
 # production
 /build
 
