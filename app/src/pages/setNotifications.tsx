@@ -12,4 +12,5 @@ const setNotifications: React.FC = () => {
   };
   
 
+  
 export default setNotifications;

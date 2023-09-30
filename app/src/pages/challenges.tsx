@@ -11,5 +11,6 @@ const Challenges: React.FC = () => {
     );
   };
   
+  
 
 export default Challenges;

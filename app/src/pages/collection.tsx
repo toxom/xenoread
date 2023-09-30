@@ -10,5 +10,6 @@ const Collection: React.FC = () => {
     );
   };
   
+  
 
 export default Collection;
